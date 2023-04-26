@@ -1,4 +1,4 @@
-# Python Scrips for Rhinoceros 6
+# Python Scripts for Rhinoceros 6
 Small Python scripts created long time ago for Rhinoceros 6 used mostly in jewelry design
 
 **sticky_curve.py** - script for creating curve, called sticky curve, which "sticks" to the selected surface, it remembers control points through which it was drawn, 

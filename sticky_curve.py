@@ -5,14 +5,12 @@ import System.Drawing.Color as syscolor
 from System import IntPtr
 import System.Collections.Generic.IEnumerable as IEnumerable
 from System.Collections.Generic import List
-#from System.Media import SoundPlayer
+from System.Media import SoundPlayer
 
-#def sound():
-#    sp = SoundPlayer()
-#    sp.SoundLocation = "sounds/goutte.wav"
-#    sp.Play()
-#    #a = raw_input("set number")
-#    #print(a)
+def sound():
+    sp = SoundPlayer()
+    sp.SoundLocation = "sounds/goutte.wav"
+    sp.Play()
 
 class StickyCurve(object):
     curve_knot_style = Rhino.Geometry.CurveKnotStyle.Chord
@@ -91,7 +89,7 @@ class StickyCurve(object):
             if gp.CommandResult()!=Rhino.Commands.Result.Success:
                 return gp.CommandResult()
             if gp.Result() != Rhino.Input.GetResult.Option:
-                #sound()
+                sound()
                 point = gp.Point()
                 self.__curve_points.append(point)
                 self.__current_point_index += 1
@@ -149,7 +147,7 @@ class StickyCurve(object):
                 doc.Views.Redraw()
                 break
             if old_p.CommandResult()== Rhino.Commands.Result.Success:
-                #sound()
+                sound()
                 temp_point_id = old_p.Object(0).ObjectId
                 temp_point_index = edit_points_id.index(temp_point_id)
             doc.Objects.Delete(temp_curve_id, True)
@@ -168,7 +166,7 @@ class StickyCurve(object):
                 doc.Views.Redraw()
                 break
             if new_p.CommandResult()== Rhino.Commands.Result.Success:
-                #sound()
+                sound()
                 self.__curve_points[temp_point_index] = new_p.Point()
             self.__curve = Rhino.Geometry.Curve.CreateInterpolatedCurve(self.__curve_points, 3, self.curve_knot_style)
             self.pull_curve()
